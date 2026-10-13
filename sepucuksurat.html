@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Everyting u are O.o &lt;3</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{--rose:#c2456b;--deep:#7d2848;--blush:#ffd6e0;--pink:#f58fab;--cream:#fff7f0;--ink:#5b3a47}
+
+*{box-sizing:border-box}
+
+html,body{height:100%}
+
+body{margin:0;font-family:'Nunito',sans-serif;color:var(--ink);overflow:hidden;
+
+background:radial-gradient(ellipse at 20% 10%,#ffe4ec,transparent 55%),radial-gradient(ellipse at 90% 30%,#ffeedd,transparent 50%),linear-gradient(180deg,#fff3f6,#ffe9ef 60%,#f7e3e8);
+
+display:flex;align-items:center;justify-content:center;padding:20px 20px 90px}
+
+.fx{position:fixed;pointer-events:none;z-index:0;will-change:transform}
+
+.fx svg{display:block;width:100%;height:100%}
+
+@keyframes rise{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:.85}100%{transform:translate(var(--x),-110vh) scale(1.1);opacity:0}}
+
+@keyframes fall{0%{transform:translate(0,-8vh) rotate(0)}100%{transform:translate(var(--x),108vh) rotate(var(--r))}}
+
+.garden{position:fixed;left:0;right:0;bottom:0;height:0;z-index:1;pointer-events:none}
+
+.fl{position:absolute;bottom:-6px;transform-origin:50% 100%;animation:grow 2.2s var(--d) both cubic-bezier(.2,1.25,.4,1)}
+
+.fl .sw{transform-box:fill-box;transform-origin:50% 100%;animation:sway 3.8s ease-in-out infinite alternate;animation-delay:var(--d)}
+
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+@keyframes sway{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+
+.scene{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;max-width:560px}
+
+h1{font-family:'Dancing Script',cursive;font-size:clamp(2rem,8vw,2.9rem);color:var(--deep);margin:0;text-align:center;line-height:1.1}
+
+.hint{margin:0;font-size:.9rem;color:var(--rose);letter-spacing:.5px;animation:blink 2.2s ease-in-out infinite}
+
+@keyframes blink{50%{opacity:.35}}
+
+.env{position:relative;width:min(80vw,320px);aspect-ratio:340/230;cursor:pointer;transition:transform .35s;filter:drop-shadow(0 18px 22px rgba(125,40,72,.28))}
+
+.env:hover{transform:translateY(-5px) rotate(-1deg)}
+
+.env.open{cursor:default;transform:none}
+
+.env>div{position:absolute;left:0;right:0}
+
+.back{inset:0;top:0;bottom:0;background:#f7b9c9;border-radius:10px}
+
+.sheet{top:8%;bottom:6%;left:7%!important;right:7%!important;background:repeating-linear-gradient(#fffaf4 0 22px,#f0dccf 22px 23px);border-radius:6px;transition:transform 1s cubic-bezier(.2,.9,.25,1) .45s;z-index:2}
+
+.env.open .sheet{transform:translateY(-58%)}
+
+.front{top:0;bottom:0;background:linear-gradient(160deg,#ffd0dc,#f9a8bd);border-radius:10px;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);z-index:3}
+
+.flap{top:0;height:58%;background:linear-gradient(180deg,#f58fab,#f9b4c6);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s cubic-bezier(.6,-.2,.3,1.2),z-index 0s .35s;z-index:4}
+
+.env.open .flap{transform:rotateX(180deg);z-index:1}
+
+.seal{position:absolute;left:50%;top:51%;width:54px;height:54px;margin:-27px 0 0 -27px;z-index:5;transition:.4s;animation:beat 1.6s infinite}
+
+.env.open .seal{opacity:0;transform:scale(.2);animation:none}
+
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+.pols{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+
+.pol{background:#fffdf9;padding:8px 8px 26px;width:min(28vw,118px);box-shadow:0 10px 18px -6px rgba(90,30,55,.4);transform:rotate(var(--t));transition:.3s;position:relative;opacity:0;animation:pop .7s var(--dl) forwards}
+
+.pol:hover{transform:rotate(0) scale(1.08) translateY(-4px);z-index:5}
+
+.pol img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+
+.pol i{position:absolute;bottom:5px;left:0;right:0;text-align:center;font:600 1rem 'Dancing Script',cursive;color:var(--deep)}
+
+.pol:before{content:"";position:absolute;top:-9px;left:50%;width:46px;height:16px;margin-left:-23px;background:rgba(245,143,171,.55);transform:rotate(-3deg)}
+
+@keyframes pop{from{opacity:0;transform:translateY(30px) rotate(var(--t))}to{opacity:1;transform:rotate(var(--t))}}
+
+.modal{position:fixed;inset:0;z-index:50;background:rgba(80,25,50,.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .5s}
+
+.modal.show{opacity:1;pointer-events:auto}
+
+.paper{position:relative;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;background:repeating-linear-gradient(#fffaf4 0 31px,#f1dfd3 31px 32px);border-radius:14px;padding:44px 28px 28px;box-shadow:0 30px 60px -15px rgba(70,20,45,.55);transform:translateY(50px) scale(.9) rotate(-1.5deg);transition:transform .7s cubic-bezier(.2,1.1,.3,1)}
+
+.modal.show .paper{transform:none}
+
+.paper:before{content:"";position:absolute;top:0;left:0;right:0;height:9px;background:repeating-linear-gradient(90deg,var(--pink) 0 16px,#ffc9a8 16px 32px);border-radius:14px 14px 0 0}
+
+.x{position:absolute;top:16px;right:14px;width:32px;height:32px;border:0;border-radius:50%;background:var(--blush);color:var(--deep);font-size:16px;cursor:pointer}
+
+.x:hover{background:var(--pink);color:#fff}
+
+.to{font:700 1.9rem 'Dancing Script',cursive;color:var(--deep);margin:0 0 10px}
+
+.txt p{margin:0 0 14px;line-height:2;font-size:1rem;min-height:1em}
+
+.txt .cur:after{content:"|";color:var(--rose);animation:blink .8s infinite}
+
+.mini{display:flex;gap:10px;justify-content:center;margin:14px 0 18px}
+
+.mini .pol{width:84px;padding:5px 5px 18px;opacity:1;animation:none}
+
+.mini .pol i{font-size:.75rem;bottom:2px}
+
+.sig{text-align:right;font:700 1.5rem 'Dancing Script',cursive;color:var(--deep);opacity:0;transition:opacity 1.2s}
+
+.sig.show{opacity:1}
+
+.bh{position:fixed;z-index:99;width:18px;height:18px;pointer-events:none;animation:burst .9s ease-out forwards}
+
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(.4) rotate(var(--r));opacity:0}}
+
+@media(prefers-reduced-motion:reduce){.fx{display:none}.fl .sw,.seal,.hint{animation:none}}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="scene">
+
+  <h1 id="title"></h1>
+
+  <p class="hint" id="hint"></p>
+
+  <div class="env" id="env">
+
+    <div class="back"></div>
+
+    <div class="sheet"></div>
+
+    <div class="front"></div>
+
+    <div class="flap"></div>
+
+    <svg class="seal" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.5" fill="#9c2f55"/><circle cx="12" cy="12" r="9" fill="none" stroke="#d9668a" stroke-width=".6"/><path d="M12 17.5s-4.6-3-4.6-6.3A2.6 2.6 0 0 1 12 9.6a2.6 2.6 0 0 1 4.6 1.6c0 3.3-4.6 6.3-4.6 6.3z" fill="#ffd6e0"/></svg>
+
+  </div>
+
+  <div class="pols" id="pols"></div>
+
+</div>
+
+
+
+<div class="garden" id="garden"></div>
+
+
+
+<div class="modal" id="modal">
+
+  <div class="paper" id="paper">
+
+    <button class="x" id="close" aria-label="tutup">✕</button>
+
+    <h2 class="to" id="to"></h2>
+
+    <div class="mini pols" id="mini"></div>
+
+    <div class="txt" id="txt"></div>
+
+    <div class="sig" id="sig"></div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+/* ============ EDIT DI SINI SAJA ============ */
+
+const CONFIG = {
+
+  nama: "Khanzaaaaaaaaaa",                       // nama penerima
+
+  dari: "Abill",                             // nama kamu
+
+  judul: "Semoga apa yang aku kasih buat kamu, kamu suka ya 🌷",
+
+  petunjuk: "Klik amplopnya yaa <3",
+
+  // Foto: taruh file di folder yang sama dengan file ini lalu tulis namanya.
+
+  // Kalau kosong / tidak ketemu, otomatis tampil placeholder bunga.
+
+  fotoDepan: [
+    { src: "2.jpeg", cap: "Terimakasih" },
+    { src: "3.jpeg", cap: "karena sudah" },
+    { src: "4.jpeg", cap: "adaaa :) <3" }
+  ],
+  // FOTO DI DALAM SURAT — ubah nama file dan caption langsung di VS Code.
+  fotoSurat: [
+    { src: "10.jpeg", cap: "ABILLLL" },
+    { src: "1.jpeg", cap: "SAAYAANGGG" },
+    { src: "11.jpeg", cap: "KHANZZAAA♡" }
+  ],
+
+  // Isi surat: tiap kalimat di dalam tanda kutip = 1 paragraf. {nama} otomatis diganti.
+
+  surat: [
+
+    "eeeyy insyirahhh,iyaa khanzaaa iyaa kamuu😗 ciyeee KAMUUU yangg kepelett lesung pipi nyaa akuu🥺🫣.. xixixi makasii yaaa kamu udahh hadir punn di hidup akuu, bertemuu denganmuu adalah hall yangg tida pernahh akuu duga sebelumnya dan tanpa akuu sadari kamuu datang membawa cahayaa yangg bahkan tidaa pernahh akuu tau sedangg aku butuhkann.. begitu beruntungnyaa akuu, bahagia aku bersamamu tidaa bisaa akuu deskripsikan karna kamu adalah salah satu bentukk bahagia yang akuu impikann🫶🏻 once againn BEBEEE, i am very lucky to have u and i will always be grateful for uu, i love u infinitely.. today tommorow and foreverrr🤍♡"
+
+  ],
+
+  tandaTangan: "— dari ABILLL yang berharap kamu selalu bahagia kapanpun dan dimana pun >_< 🌷"
+
+};
+
+/* ============================================ */
+
+
+
+const $ = id => document.getElementById(id);
+
+const rnd = (a,b) => a + Math.random()*(b-a);
+
+const fill = s => s.replace(/{nama}/g,CONFIG.nama).replace(/{dari}/g,CONFIG.dari);
+
+
+
+$('title').textContent = CONFIG.judul;
+
+$('hint').textContent = CONFIG.petunjuk;
+
+$('to').textContent = fill("Untuk {nama} 💌");
+
+
+
+/* ---------- foto ---------- */
+
+const ph = t => 'data:image/svg+xml,' + encodeURIComponent(
+
+ `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160"><rect width="120" height="160" fill="#ffd6e0"/><g transform="translate(60 70)">${[0,72,144,216,288].map(a=>`<ellipse cy="-17" rx="10" ry="17" fill="#f58fab" transform="rotate(${a})"/>`).join('')}<circle r="8" fill="#ffd36b"/></g><text x="60" y="140" font-size="11" text-anchor="middle" fill="#9c2f55" font-family="sans-serif">${t}</text></svg>`);
+
+const tilts = [-6,4,-3,5,-4];
+
+function pols(el, daftarFoto){
+  el.innerHTML = daftarFoto.map((f,i)=>
+
+   `<div class="pol" style="--t:${tilts[i%5]}deg;--dl:${1.2+i*.25}s"><img src="${f.src}" alt="${f.cap}" onerror="this.onerror=null;this.src='${ph('ganti foto')}'"><i>${f.cap}</i></div>`).join('');
+
+}
+
+pols($('pols'), CONFIG.fotoDepan); pols($('mini'), CONFIG.fotoSurat);
+
+
+
+/* ---------- love & kelopak melayang ---------- */
+
+const heart = c => `<svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z" fill="${c}"/></svg>`;
+
+const petal = c => `<svg viewBox="0 0 24 24"><path d="M12 1C20 7 20 17 12 23 4 17 4 7 12 1z" fill="${c}"/></svg>`;
+
+const hc = ['#f58fab','#e0577f','#ffb3c6','#ff8fa3'], pc = ['#ffc2d1','#ffb3c6','#fff0f3','#ffa6bd'];
+
+function spawn(kind){
+
+  const d = document.createElement('div'); d.className = 'fx';
+
+  const s = rnd(14,30);
+
+  d.style.cssText = `left:${rnd(0,100)}vw;width:${s}px;height:${s}px;--x:${rnd(-80,80)}px;--r:${rnd(240,720)}deg;`;
+
+  if(kind==='h'){ d.style.bottom='-30px'; d.innerHTML = heart(hc[~~rnd(0,4)]); d.style.animation=`rise ${rnd(8,15)}s linear forwards`; }
+
+  else { d.style.top='-30px'; d.innerHTML = petal(pc[~~rnd(0,4)]); d.style.animation=`fall ${rnd(9,16)}s linear forwards`; }
+
+  document.body.appendChild(d);
+
+  setTimeout(()=>d.remove(),17000);
+
+}
+
+for(let i=0;i<8;i++){ setTimeout(()=>spawn('h'),i*500); setTimeout(()=>spawn('p'),i*600); }
+
+setInterval(()=>spawn('h'),1100);
+
+setInterval(()=>spawn('p'),900);
+
+
+
+/* ---------- taman bunga ---------- */
+
+function flower(c,h,w,x,d){
+
+  const petals = [0,60,120,180,240,300].map(a=>`<ellipse cy="-13" rx="7.5" ry="13" fill="${c}" transform="rotate(${a})"/>`).join('');
+
+  return `<svg class="fl" style="left:${x}%;--d:${d}s" width="${w}" height="${h}" viewBox="0 0 60 140" preserveAspectRatio="none"><g class="sw">
+
+  <path d="M30 140C27 105 34 72 30 42" stroke="#6f9a6b" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <path d="M31 108q-20-4-23-22 19 1 23 22z" fill="#86ad7f"/><path d="M30 90q18-3 21-19-17 1-21 19z" fill="#9bc093"/>
+
+  <g transform="translate(30 32)">${petals}<circle r="6.5" fill="#ffd36b"/><circle r="2.5" cx="-1.5" cy="-1.5" fill="#f2b84b"/></g></g></svg>`;
+
+}
+
+const cols = ['#f58fab','#ff8fa3','#ffb3c6','#e0577f','#ffc2d1','#f9a8bd'];
+
+let g = '';
+
+for(let i=0;i<14;i++){
+
+  const w = rnd(46,74);
+
+  g += flower(cols[i%cols.length], w*rnd(1.5,2.3), w, i*7.4 + rnd(-2,2), (i*.18 + rnd(0,.5)).toFixed(2));
+
+}
+
+$('garden').innerHTML = g;
+
+
+
+/* ---------- ledakan love saat klik ---------- */
+
+function burst(x,y){
+
+  for(let i=0;i<9;i++){
+
+    const b = document.createElement('div'); b.className='bh';
+
+    b.innerHTML = heart(hc[i%4]);
+
+    b.style.cssText = `left:${x-9}px;top:${y-9}px;--dx:${rnd(-90,90)}px;--dy:${rnd(-120,-20)}px;--r:${rnd(-60,60)}deg`;
+
+    document.body.appendChild(b); setTimeout(()=>b.remove(),950);
+
+  }
+
+}
+
+document.addEventListener('pointerdown',e=>burst(e.clientX,e.clientY));
+
+
+
+/* ---------- surat & efek ketik ---------- */
+
+const env=$('env'), modal=$('modal'), txt=$('txt'), sig=$('sig');
+
+let opened=false, typing=0;
+
+
+
+function typeParas(list,i){
+
+  if(i>=list.length){ sig.textContent = fill(CONFIG.tandaTangan); sig.classList.add('show'); return; }
+
+  const p = document.createElement('p'); p.className='cur'; txt.appendChild(p);
+
+  let n=0; const full=list[i];
+
+  typing = setInterval(()=>{
+
+    p.textContent = full.slice(0,++n);
+
+    $('paper').scrollTop = $('paper').scrollHeight;
+
+    if(n>=full.length){ clearInterval(typing); p.classList.remove('cur'); setTimeout(()=>typeParas(list,i+1),350); }
+
+  }, 32);
+
+}
+
+function openLetter(){
+
+  txt.innerHTML=''; sig.classList.remove('show'); sig.textContent='';
+
+  modal.classList.add('show');
+
+  setTimeout(()=>typeParas(CONFIG.surat.map(fill),0),700);
+
+}
+
+env.addEventListener('click',()=>{
+
+  if(opened) return; opened=true; env.classList.add('open');
+
+  $('hint').style.visibility='hidden';
+
+  setTimeout(openLetter,1500);
+
+});
+
+function closeModal(){
+
+  clearInterval(typing); modal.classList.remove('show');
+
+  // klik amplop lagi untuk baca ulang
+
+  setTimeout(()=>{ env.classList.remove('open'); opened=false; $('hint').style.visibility='visible'; $('hint').textContent='pencet lagi kalau mau baca ulang ♡'; },500);
+
+}
+
+$('close').addEventListener('click',closeModal);
+
+modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+</script>
+
+</body>
+
+</html>
